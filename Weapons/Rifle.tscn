@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7b0ech0h2f6u"]
+[gd_scene load_steps=8 format=3 uid="uid://cxbudklcy5khg"]
 
-[ext_resource type="PackedScene" uid="uid://ia0ln3t7lxaa" path="res://Weapons/hitscan_weapon.tscn" id="1_d7pmn"]
-[ext_resource type="ArrayMesh" uid="uid://b4sb4ct007hxf" path="res://Weapons/SubmachineGun_01.obj" id="2_6g1ss"]
+[ext_resource type="PackedScene" uid="uid://ia0ln3t7lxaa" path="res://Weapons/hitscan_weapon.tscn" id="1_x85sp"]
+[ext_resource type="ArrayMesh" uid="uid://dx36f7jomud48" path="res://Weapons/WeaponsPack_V.1/OBJ/AssaultRifle_02.obj" id="2_boih0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7k8nw"]
 emission_enabled = true
@@ -27,19 +27,21 @@ scale_curve = SubResource("CurveTexture_lklcd")
 [sub_resource type="BoxMesh" id="BoxMesh_hb6er"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="SMG" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_d7pmn")]
-weapon_mesh = NodePath("SMG")
+[node name="Rifle" node_paths=PackedStringArray("weapon_mesh", "muzzle_flash") instance=ExtResource("1_x85sp")]
+fire_rate = 8.0
+recoil = 0.3
+weapon_mesh = NodePath("Rifle")
+weapon_damage = 70
 muzzle_flash = NodePath("MuzzleFlash")
-automatic = true
 
-[node name="SMG" type="MeshInstance3D" parent="." index="1"]
-transform = Transform3D(-0.285, 0, -4.30338e-08, 0, 0.285, 0, 4.30338e-08, 0, -0.285, 0.644, -0.455, -1.8)
+[node name="Rifle" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.69, 0, 0, 0, 0.69, 0, 0, 0, 0.69, 0.644, -0.455, -1.8)
 layers = 2
-mesh = ExtResource("2_6g1ss")
+mesh = ExtResource("2_boih0")
 skeleton = NodePath("../..")
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.639, -0.381, -2.48617)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.644075, -0.430575, -3.56635)
 layers = 2
 material_override = SubResource("StandardMaterial3D_7k8nw")
 cast_shadow = 0
