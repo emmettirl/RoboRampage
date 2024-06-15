@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bw0w7adsl8ipw"]
+[gd_scene load_steps=17 format=3 uid="uid://bw0w7adsl8ipw"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_ausul"]
 [ext_resource type="Script" path="res://player/SmoothCamera.gd" id="2_nfd21"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c8ssstmt4ey8x" path="res://player/damage.png" id="5_45y5t"]
 [ext_resource type="Script" path="res://player/Ammo Handler.gd" id="6_unfpy"]
 [ext_resource type="PackedScene" uid="uid://bot3r230jlqs" path="res://player/game_over_menu.tscn" id="6_ynl34"]
+[ext_resource type="FontFile" uid="uid://cnxxvnpw53nc2" path="res://Assets/Tiny5/Tiny5-Regular.ttf" id="9_x32in"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_su6by"]
 
@@ -75,6 +76,10 @@ _data = {
 "TakeDamage": SubResource("Animation_6kikf")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_hmce0"]
+font = ExtResource("9_x32in")
+font_size = 64
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_ausul")
 
@@ -119,18 +124,15 @@ Weapon1 = NodePath("Rifle")
 Weapon2 = NodePath("SMG")
 
 [node name="Rifle" parent="SubViewportContainer/SubViewport/Weapon Camera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("3_x56rh")]
-automatic = false
 ammo_handler = NodePath("../../Ammo Handler")
 
 [node name="SMG" parent="SubViewportContainer/SubViewport/Weapon Camera/WeaponHandler" node_paths=PackedStringArray("ammo_handler") instance=ExtResource("3_pckvk")]
-fire_rate = 14.0
-recoil = 0.05
-weapon_damage = 15
 ammo_handler = NodePath("../../Ammo Handler")
 ammo_type = 1
 
-[node name="Ammo Handler" type="Node" parent="SubViewportContainer/SubViewport/Weapon Camera"]
+[node name="Ammo Handler" type="Node" parent="SubViewportContainer/SubViewport/Weapon Camera" node_paths=PackedStringArray("ammo_label")]
 script = ExtResource("6_unfpy")
+ammo_label = NodePath("../../../../MarginContainer/AmmoLabel")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 15
@@ -159,6 +161,25 @@ texture = ExtResource("5_45y5t")
 libraries = {
 "": SubResource("AnimationLibrary_5kr3n")
 }
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AmmoLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "999"
+label_settings = SubResource("LabelSettings_hmce0")
 
 [node name="GameOverMenu" parent="." instance=ExtResource("6_ynl34")]
 visible = false
