@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7dwyicaxkw8g"
-path.s3tc="res://.godot/imported/prototype-texture.png-60936442b7a7b83431590b9df167be86.s3tc.ctex"
+uid="uid://ckbwjnv0pco26"
+path.s3tc="res://.godot/imported/Pillar_Palette-Base-SF.png-089fc891ccc1e43ba1d1d296a8b5c1d1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://levels/materials/prototype-texture.png"
-dest_files=["res://.godot/imported/prototype-texture.png-60936442b7a7b83431590b9df167be86.s3tc.ctex"]
+source_file="res://Assets/36_RR_G3D - Props/Pillar_Palette-Base-SF.png"
+dest_files=["res://.godot/imported/Pillar_Palette-Base-SF.png-089fc891ccc1e43ba1d1d296a8b5c1d1.s3tc.ctex"]
 
 [params]
 
